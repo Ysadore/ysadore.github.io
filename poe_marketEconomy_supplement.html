@@ -1,0 +1,140 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Path of Exile - a Perfectly Competitive Market?</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Gregory Hinds</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+</li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Path of Exile - a Perfectly Competitive Market? - A Supplement</h1>
+<h4> February 2025 </h4>
+							<span class="image fit"><img src="images/path-of-exile-1-cover-art-logo.jpg" alt="" /></span>
+							<p>In the <a href=poe_marketEconomy.html>parent article</a>, we discussed to what extent <i>Path of Exile 1</i>'s player currency markets modelled a perfectly competitive free market. To summarise: quite well. For all the details, go read that first. In this supplement, we'll take a brief look at two other aspects of the currency markets - pricing variation over the league, and arbitrage.</p>
+							<br>
+							<p> For the .ipynb notebook that has all the code used to retrieve the data and make the visualisations, head over to my github repo <a href="https://github.com/Ysadore/PoE_EconomyAnalysis/blob/main/PoE%20Economy%20Analysis.ipynb"here</a>. </p>
+							
+<h2>Section 0: Data</h2>
+<p> The start of any analysis project, however brief, is getting the data. Fortunately for us, the (actual) wizards over a <a href="www.poe.ninja">poe.ninja</a> have done all of that for us. They produce daily records of the price of almost all items, record the history, and make it available in <a href="https://poe.ninja/data">data dumps</a>. They do have an API, but it doesn't allow access to the historical data, so it's also availabe in my github repo linked above. <br>
+The notebook above has all the data retrieval and manipulation code in it.</p>
+<br>
+We are going to limit our analysis to a few of the most common currency items - Divine Orbs, Chaos Orbs, Chromatic Orbs and Cartographer's Chisels. <i>The notebook does retrieve more items than these, but they're not (yet?) used below.</i> Likewise, we'll limit ourselves only to the Affliction, Ancestor, Crucible, Kalandra, Necropolis and Sanctum leagues. These should be sufficient to get a good overview of cross-league behaviours, while keeping the amount of data under control.
+
+<h2> Section 1: Price Effects over the league duration</h2>
+<p>Now that we've prepared our data a bit, let's see what sort of price, supply and demand mechanisms we can see at play in exchange rates between the different currency items during the league. Let's start by looking at the exchange rate of Chaos Orbs to Divine Orbs.</p>
+<h4>Divine Orbs Price Variation</h4>
+<p><span class="image left"><img src="images/poe_market_econ_supplement/DivInChaosAnnotated.jpg" alt="" /></span>What does this tell us? 
+<ul>
+	<li>The market undergoes rapid changes for approxiamtely the first 20 days while players get established in the league. In this time players canny enough to buy a Divine Orb will see it rapidly appreciate over the next fortnight. </li>
+	<li>After this period the prices generally stabilise, though the price at which it does so is variable. This will depend ion the exact mechanics of the league - for example, Necropolis had mechanics allowing for very efficient collection of Divine Orbs. This will have increased the relative supply and thus reduced the cost. </li>
+	<li>After the initial stabilisation, prices generally shift slowly. </li>
+</ul> </p>
+<p> Despite these apparent phases, it's clear that there are league variations. For example, the price of Divine Orbs spikes then falls very quickly before stabilising, a behaviour unlike other leagues. Likewise, the price in the Affliction league falls dramatically despite the overall trend of price stabiltiy in days 40+.
+Let's see if the trends are replicated with another currency item - this time, the Chromatic Orb.
+
+<h4>Chromatic Orb Price Variation</h4>
+<p> Chromatic Orbs are significantly more common than Chaos Orbs in Path of Exile, and the relative price reflects that. Whereas a Divine Orb was worth 250 Chaos Orbs in some leagues, a Chromatic Orb is generally worth around and eighth of a Chaos Orb.
+<span class="image right"><img src="images/poe_market_econ_supplement/ChromaticInChaosAnnotated.jpg" alt="" /></span>
+<ul>
+	<li>Like the Chaos/Divine conversion rate, Chaos/Chromatic exhibits rapid change very early in the league, and a period of stability afterwards. </li>
+	<li>However, after around 80 days in we can observe spiky unpredictability in the rate - in Affliction league it climbs to higher than its starting price, for example, before spiking around and falling rapidly again.</li>
+	<li>Chromatic Orbs tend to be used in bulk when players have reached end-game content (mapping) much more so than in the early and middle game. It is possible the rises in price later in the league reflects more players reaching end-game content and increasing the demand. </li>
+</ul> </p>
+<br>
+<p> We can clearly see that prices in <i>Path of Exile</i>'s currency markets fluctuate. Unfortunately, we can't see other useful facts like number of transactions, or the individual prices they were made at, or any other data points  that could help us understand if these changes were driven by changes in supply or demand.
+
+<h2> Section 2: Arbitrage</h2>
+<p>Arbitrage is a market practise whereby one can buy and sell different goods or commodities across different markets, in order to take advantage of differing prices across those markets. In the real world, this is often the case with forex markets, where differing prices mean I can buy a currency in one market and sell it back to my original currency in another market, resulting in me having the more of the currency I started with at miimal (or no) risk. In real world markets, arbitrage is either illegal, or exploited very quickly by actors, pushing the price down to a point where arbitrage is not possible.
+<br>
+Let's see if we can find any arbitrage opportunities in PoE"
+<br>
+As mentioned in the parent article, there is only one market in each PoE league, so our actors cannot try to exercise arbitrage between markets as in our example. However, we do still have multiple floating currency item prices within the same market, so if actors can buy a currency item and see it back at a profit (potentially via a third currency) then arbitrage is still possible.
+<br>
+In general, we should expect the price of currency A in currency B multiplied by the price of currency B in A to equal 1. Where that's not the case, there's scope for arbitrage. </p>
+<br>
+<p>Let's start with Divine Orbs and Chaos Orbs. This is one of the most demanded currency pairs after all, and usually a highly valuable one. <br>
+We can calculate the product of the two prices on a given league day. If the market is working effectively it should be close or equal to 1.</p>
+<span class="image right"><img src="images/poe_market_econ_supplement/ArbitrageDivChaosRelative.jpg" alt="" /></span> If we look past the spike on Day 1 of each league, the relative price of the pair stays relatively close to one. Some leagues are less stable, though - we can see that in the Affliction and Necropolis Leagues the prices are significantly less responsive, and large price differentials open up.
+<br><br>
+<p>Let's look at another pair - Cartographer's Chisels and Chaos Orbs. </p>
+<p>The notebook linked at the top produces this table row (trimmed to remove some unnecessary columns:
+<table>
+	<tr>
+		<td>League</td>
+		<td>Date</td>
+		<td>Get</td>
+		<td>Pay</td>
+		<td>Value_x (<i>Chaos Orbs per Chisel</i>)</td>
+		<td>Value_y (<i>Chisels per Chaos Orbs</i>)</td>
+		<td>Relative Price</td>
+	</tr>
+	<tr>
+		<td>Affliction</td>
+		<td>2023-12-10</td>
+		<td>Cartographer's Chisel</td>
+		<td>Chaos Orb</td>
+		<td>0.1</td>
+		<td>9.0</td>
+		<td>0.9</td>
+	</tr>
+</table>
+<p>This below is a good example of an opportunity for arbitrage. If I start with one Chaos Orb, I can trade it for 10 Chisels (each chisel is worth 0.1 Chaos Orbs, in the Value_x column). Then, with my 10 chisels, I can spend 9 of them to buy a Chaos Orb (each Chaos Orb is worth 9 chisels, in the Value_y column). Having completed my trade, I now have 1 Chaos Orb and 1 Chisel, and undertook no risk to do so. <br>
+That the Relative Price column is less than one indicates that I can arbitrage on Chaos Orbs through Chisels; if it were greater than one the converse would be true. </p>
+<p>Let's have a look at this relationship graphically. We'll focus in on just the Afflication and Kalandra leagues. (<i>A graph with all the leagues is in the notebook</i>). <span class="image right"><img src="images/poe_market_econ_supplement/ArbitrageChiselChaosRelativeAfflicationAndKalandra.jpg" alt="" /></span> 
+What can we see here?
+<ul>
+    <li>The Affliction League price is quite unpredictable, and cycles between arbitrage being available from Chaos Orbs to Chisels (<1) and the other way round (>1).</li>
+    <li>The Kalandra league relative price is similarly unstable, but remains constantly high and rises throughout the league. While I cannot find a game mechanic that accounts for it, presumable this indicates that demand for Chisels was high enough throughout the league that the price could never equalise, or that players would not buy Chaos Orbs for Chisels consistently enough to prevent the price from rising.</li>
+</ul>
+Again, unfortunately, we lack the data to be able to identify the root cause of this inequality, and why it was not corrected by the market. But it's fascinating to see a real-life economic 'feature' displayed in a virtual economy.
+</p>
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Gregory Hinds. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
