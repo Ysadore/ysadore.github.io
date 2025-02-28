@@ -1,0 +1,127 @@
+<!DOCTYPE HTML>
+<!--
+	Hyperspace by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Path of Exile - a Perfectly Competitive Market?</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<header id="header">
+				<a href="index.html" class="title">Gregory Hinds</a>
+				<nav>
+					<ul>
+						<li><a href="index.html">Home</a></li>
+</li>
+					</ul>
+				</nav>
+			</header>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<section id="main" class="wrapper">
+						<div class="inner">
+							<h1 class="major">Explaining the <i>Sinks and Faucets</i> model and applying it to <i>Path of Exile</i></h1>
+<h4> February 2025 </h4>
+							<span class="image fit"><img src="images/path-of-exile-1-cover-art-logo.jpg" alt="" /></span>
+							<p>The <i>Sinks and Faucets</i> model is a common way to model virtual game economies. In this article, we're going to apply the model to <i>Path of Exile 1</i> and see what design decisions they've made to implement this. </p>
+							
+<h2>Section 0: What is the <i>Sinks and Faucets</i> model?</h2>
+<p> Game economies differ from real-world in several ways, but possibly the most important is that assets can be created from nothing (<i>ex nihilo</i>), and do not need to be tied into an existing economic process. Similarly, assets do not depreciate unless a game mechanic specifically calls for it. In order to maintain economic balance between players and with game elements, we need to find ways to remove assets from the economy as well. Let's look at that in more detail. </p>
+
+<h4> Faucets </h4>
+<p><i>Faucets</i> (or as I grew up calling them, taps) are game processes that create assets in the game. These could be:
+<ul>
+	<li>A player kills an orc and loots the gold coins it was carrying</li>
+	<li>A player harvests their crops, adding the cabbages to their inventory </li>
+	<li>A player mines an asteroid, filling their ship with iron ore </li>
+</ul>
+or any number of other processes. All that matters is that the asset was created in game without the removal of any other assets. Players are incentivised to repeat these tasks, and thus without assistance the supply of these assets will grow consistently until they are all but worthless - either they have far more than the fixed in-game prices, making purchases feel meaningless, or they cannot exchange them with other players because everyone has a huge supply already. </p>
+<p>Faucets are essential to game economies - unless your game relies very carefully on a closed economy, new things will need to enter it - but they also need to be carefully managed to prevent inflationary effects. </p>
+<br>
+<p> Additionally, we <i>want</i> players to perform these actions, and for it to feel rewarding! These are a core part of the game, and it's important for it to feel satisfying. Nothing is worse than playing for a long period to achieve a goal (slaying the demon king, harvesting a rare plant or finding ancient technology in an alien shipwreck) only to find out that the rewards presented in-game as rare as in fact common-place and worthless. This will lead to poor player satisfaction and retention, as they struggle to identify the worth of things in the game. </p>
+<p> Therefore, we need to have ways to remove assets from the economy.</p>
+
+<h4> Sinks </h4>
+A <i>sink</i> is any process that removes assets from the in-game economy. There are quite a lot of different ways we can do this, and some of them can be built seamlessly into game mechanics. Let's take a look at some common options: </p>
+<ul>
+	<li><b>Crafting</b> allows players to exchange non-currency items for other items along set paths. For example, players might be able to craft two <i>wooden planks</i> and one <i>iron ingot</i> into a shield. Not only does this allow players another avenue for game interaction, but we have also removed the crafting ingredients from the game. However, we have also created a new asset, which may suffer the same process we are trying to remediate if the ingredients are too common.</li>
+	<li><b>Taxes on utilities</b> require players to pay money to do things they want to do already - for example, teleport between areas or repair their items. The money charged to the player is removed from the economy. </li>
+	<li><b>Taxes on trades</b> if there is a player-to-player marketplace, we can levy taxes on trades. We may also have the ability to target these taxes at a fine granularity, to focus on trades in items most at risk of over-supply.</li>
+	<li><b>Conspicuous consumption</b> allows players to create items or perform actions at exorbitant cost, whose only purpose is to demonstrate how rich they are. Players, in general, love to do things for bragging rights and to flex on other players, and giving them options to do is a good way to remove their excess wealth from circulation.</li>
+</ul>
+There are many other methods available to designers, but they key aspect is that they remove items from the economy. Before we start talking about <i>Path of Exile</i> specifically, there's one more thing we should discuss. </p>
+
+<h4>Sinks and Faucets</h4>
+<p>Therefore, the overall thesis of the model is that <i>assets issued by faucets must be approximately equal to assets destroyed by sinks</i>. Ideally, we want to do this in a way that feels completely naturaly to players, rather than as a constant irritation. Fortunately, <i>Path of Exile</i> excels at this. </p>
+
+<h2> Applying the Model to <i>Path of Exile</i>
+<h4> Items and Currency in PoE </h4>
+<p>In PoE, players receive items when enemies are slain, and for the most part these items can be divided into two categories - items and currency. Items can be equipped by players and used in combat, and are a key part of a player's progression - stronger items are required to progress through the key.</p>
+<p>PoE breaks the mould of games of its genre with currency, though. There is no direct equivalent to gold coins, or any single universal currency. Instead, players receive 'currency items' which, while used as a store of value and means of exchange, all also perform another function.</p>
+<p> For example, <i>an Orb of Transmutation</i> upgrades a normal-quality item to a magic item of the same type, but with random modifiers applied to it (such as increased fire resistance, weapon damage or countless others). A player could then use an <i>Orb of Alteration</i> to re-roll those modifers, to try and find ones that more closely match their character's strengths. When used in these ways, the currency item is destroyed - a sink! </p>
+<p> While playing, players will develop strong desires for the outcomes of their random item modifiers, and will potentially spend large amounts of currency to roll items that match their requirements. Equally, they can save that currency for future crafting efforts, or to use on the player markets to buy items that are close to their requirements. Because players are free to set their own prices, potent items will be very expensive, and items less in demand will be cheaper (<i>See my analysis of market behaviours in PoE for more on this</i>).
+
+<h4> Sinks and Faucets </h4>
+<p> Reading the above, you've probably figured out some of the sinks and faucets that PoE uses already. Here's a clearer list. </p>
+
+<h5> Faucets </h5>
+<ul>
+	<li><b>Item drops</b> are the most obvious faucet. Players will slay a <i>lot</i> of monsters as they progress through the game, and will collect the currency and otehr valuable items from doing so. </li>
+	<li><b>Events and League interactions</b> are timed events within the game, that allow players to take on greater risk in exchange for greater reward.</li>
+	<li><b>Quest rewards</b> are not emphasised as much as many other games, but as they do often give rare or unusual items they can nevertheless contribute to inflation.</li>
+</ul>
+<p>And that's it!
+
+<h5> Sinks </h5>
+<ul>
+	<li><b>Crafting</b>, as discussed above, is an integral part of the game, and allows players to consume different types to currency to customise and upgrade their items. The impact of crafting on the usage of currency cannot be overstated - it is a central game mechanic, and core to player progression, especially in the late game, when crafting and improving items is very expensive. </li>
+	<li><b>Vendor currency conversions</b> allow players to convert one type of currency into another, usually at fairly harsh exchange rates. Player markets will almost always offer a better rate of exchange than these, but the vendors do nonetheless allow players to convert currencies without using these, and in so doing remove currency from the market. </li>
+	<li><b>Vendors and Masters</b> are present throughout the game, and offer more  shops for players, sometimes focusing on specific character archetypes. In exchange for these items, players can pay currency, this removing it from the game. </li>
+</ul>
+<p>... And that's it. That the lists of sinks and faucets in PoE is so short indicates what a tight design it is at an economic level - while there are countless types of currency and items, they are all handled in the same way. <i>All</i> the currency items are useful for <i>something</i>, even if some are more or less useful than others (<i>Chaos Orbs</i>, for example, are always in high demand amongst players, to the point where they function as a standard exchange unit).</p>
+
+<h2>Conclusions</h2>
+<i>Path of Exile</i> represents a excellent implementation of the Sinks and Faucets model, because it is so completely integrated into the game that it's almost invisible. The coherence of the system and its simplicity makes it a perfect example of the model in practise.</p>
+<br>
+
+
+Thanks for reading! I've also done other analysis of Path of Exile's economy - see the links on the main page.
+
+
+
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Footer -->
+			<footer id="footer" class="wrapper alt">
+				<div class="inner">
+					<ul class="menu">
+						<li>&copy; Gregory Hinds. All rights reserved.</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+					</ul>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
